@@ -6,9 +6,7 @@
 			body {
 				background: #F7F8F9;
 				font-family: Arial, Helvetica, Sans-serif;
-			}
-
-			h1 {
+				font-size: 22px;
 			}
 		</style>
 	</head>
@@ -16,11 +14,6 @@
 		<h1>SAPA#Helper</h1>
 		<form>
 			<table>
-				<tr>
-					<td><label for="nprogram">Nama Program:</label></td>
-					<td><input type="text" id="namaprokar" name="namaprokar" size="50"></td>
-				</tr>
-
 				<tr>
 					<td><label for="spelaksanaan">Status Pelaksanaan:</label></td>
 					<td>
@@ -85,6 +78,10 @@
 					<td><input type="reset" value="Reset" /> <button type="button" onclick="proses()">Proses</button></td>
 				</tr>
 				<tr>
+					<td colspan="2"><br><b>Silahkan di copy-paste ke SAPA:</b></td>
+
+				</tr>
+				<tr>
 					<td><label for="sapatr">SAPA Target Realisasi:</label></td>
 					<td><textarea id="sapatr" name="sapatr" rows="3" cols="100"></textarea></td>
 				</tr>
@@ -98,7 +95,6 @@
 		</form>
 		<script>
 			function proses(){
-				var txt = "Blablabla";
 				document.getElementById("sapatr").value = document.getElementById("status").value + "#" + document.getElementById("catatan").value+ "#" + document.getElementById("jpeserta").value+ "#" + document.getElementById("dpeserta").value;
 				document.getElementById("sapacr").value = document.getElementById("tkeberhasilan").value + "#" + document.getElementById("ptarget").value+ "#" + document.getElementById("fhambatan").value + "#" + document.getElementById("fpendukung").value + "#" + document.getElementById("saran").value;
 			}
