@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<title>SAPA#Helper</title>
+		<style>
+			body {
+				background: #F1F1F2;
+				font-family: Arial, Helvetica, Sans-serif;
+			}
+
+			h1 {
+			}
+		</style>
+	</head>
+	<body>
+		<h1>SAPA#Helper</h1>
+		<form>
+			<table>
+				<tr>
+					<td><label for="nprogram">Nama Program:</label></td>
+					<td><input type="text" id="namaprokar" name="namaprokar" size="50"></td>
+				</tr>
+
+				<tr>
+					<td><label for="spelaksanaan">Status Pelaksanaan:</label></td>
+					<td>
+						<select id="status" name="status">
+							<option value="Terlaksana">Terlaksana</option>
+							<option value="Tidak Terlaksana">Tidak Terlaksana</opton>
+							<option value="Ditunda">Ditunda</option>
+							<option value="On Progress">On Progress</option>
+						</select>
+					</td>
+				</tr>
+
+				<tr>
+					<td><label for="catatan">Catatan Realisasi:</label></td>
+					<td><input type="text" id="catatan" name="catatan" size="50"></td>
+				</tr>
+
+				<tr>
+					<td><label for="jpeserta">Jumlah Peserta:</label></td>
+					<td><input type="text" id="jpeserta" name="jpeserta"></td>
+				</tr>
+
+				<tr>
+					<td><label for="dpeserta">Deskripsi Peserta:</label></td>
+					<td><input type="text" id="dpeserta" name="dpeserta" size="50"></td>
+				</tr>
+				<tr>
+					<td><label for="tkeberhasilan">Tingkat Keberhasilan:</label></td>
+					<td>
+						<select id="tkeberhasilan" name="tkeberhasilan">
+							<option value=""></option>
+							<option value="Memuaskan">Memuaskan</option>
+							<option value="Cukup memuaskan">Cukup memuaskan</opton>
+							<option value="Kurang memuaskan">Kurang memuaskan</option>
+							<option value="On Progress">On Progress</option>
+						</select>
+					</td>
+				</tr>
+
+				<tr>
+					<td><label for="ptarget">Pencapaian Target:</label></td>
+					<td><input type="text" id="ptarget" name="ptarget" size="50"></td>
+				</tr>
+
+				<tr>
+					<td><label for="fhambatan">Faktor Hambatan:</label></td>
+					<td><input type="text" id="fhambatan" name="fhambatan" size="50"></td>
+				</tr>
+
+				<tr>
+					<td><label for="fpendukung">Faktor Pendukung:</label></td>
+					<td><input type="text" id="fpendukung" name="fpendukung" size="50"></td>
+				</tr>
+
+				<tr>
+					<td><label for="saran">Saran Perbaikan YAD:</label></td>
+					<td><input type="text" id="saran" name="saran" size="50"></td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td><input type="reset" value="Reset" /> <button type="button" onclick="proses()">Proses</button></td>
+				</tr>
+				<tr>
+					<td><label for="sapatr">SAPA Target Realisasi:</label></td>
+					<td><textarea id="sapatr" name="sapatr" rows="3" cols="100"></textarea></td>
+				</tr>
+
+				<tr>
+					<td><label for="sapacr">SAPA Catatan Realisasi:</label></td>
+					<td><textarea id="sapacr" name="sapacr" rows="3" cols="100"></textarea></td>
+				</tr>
+
+			</table>
+		</form>
+		<script>
+			function proses(){
+				var txt = "Blablabla";
+				document.getElementById("sapatr").value = document.getElementById("status").value + "#" + document.getElementById("catatan").value+ "#" + document.getElementById("jpeserta").value+ "#" + document.getElementById("dpeserta").value;
+				document.getElementById("sapacr").value = document.getElementById("tkeberhasilan").value + "#" + document.getElementById("ptarget").value+ "#" + document.getElementById("fhambatan").value + "#" + document.getElementById("fpendukung").value + "#" + document.getElementById("saran").value;
+			}
+		</script>
+	</body>
+</html>
