@@ -40,6 +40,19 @@ label {
   cursor: pointer;
 }
 
+.cpbutton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 .container {
   border-radius: 5px;
   background-color: #f2f2f2;
@@ -171,18 +184,24 @@ label {
 	</div>
 	<div class="row">
 		<div class="col-25">
-		  <label for="sapatr">SAPA Target Realisasi</label>
+		  <label for="sapatr">SAPA Target Realisasi
+		  <p style="font-size:12px">(Max 100 karakter)</p>
+		  </label>
 		</div>
 		<div class="col-75">
 			<textarea id="sapatr" name="sapatr" disabled></textarea>
+			<button class="cpbutton" type="button" onclick="cptr()">Copy</button>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-25">
-		  <label for="sapacr">SAPA Catatan Realisasi</label>
+		  <label for="sapacr">SAPA Catatan Realisasi
+		  <p style="font-size:12px">(Max 255 karakter)</p>
+		  </label>
 		</div>
 		<div class="col-75">
 			<textarea id="sapacr" name="sapacr" disabled></textarea>
+			<button class="cpbutton" type="button" onclick="cpcr()">Copy</button>
 		</div>
 	</div>
 	</form>
@@ -194,6 +213,28 @@ label {
 		function proses(){
 			document.getElementById("sapatr").value = document.getElementById("status").value + "#" + document.getElementById("catatan").value.trim() + "#" + document.getElementById("jpeserta").value.trim() + "#" + document.getElementById("dpeserta").value.trim();
 			document.getElementById("sapacr").value = document.getElementById("tkeberhasilan").value + "#" + document.getElementById("ptarget").value.trim() + "#" + document.getElementById("fhambatan").value.trim() + "#" + document.getElementById("fpendukung").value.trim() + "#" + document.getElementById("saran").value.trim();
+			if(document.getElementById("sapatr").value.length > 100) {
+				document.getElementById("sapatr").value = "Melebihi 100 karakter, isian data Catatan Realisasi, Jumlah Peserta dan Deskripsi Peserta tolong dipersingkat.";
+			}
+			if(document.getElementById("sapacr").value.length > 255) {
+				document.getElementById("sapacr").value = "Melebihi 255 karakter, isian data Pencapaian Target, Faktor Hambatan, Faktor Pendukung dan Saran Perbaikan YAD tolong dipersingkat.";
+			}
+		}
+		function cptr() {
+  			var copyText = document.getElementById("sapatr");
+
+  			copyText.select();
+  			copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  			navigator.clipboard.writeText(copyText.value);
+		}
+		function cpcr() {
+  			var copyText = document.getElementById("sapacr");
+
+  			copyText.select();
+  			copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  			navigator.clipboard.writeText(copyText.value);
 		}
 	</script>
 </div>
