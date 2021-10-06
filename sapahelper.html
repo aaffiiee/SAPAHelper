@@ -192,8 +192,8 @@ label {
 		}
 
 		function proses(){
-			document.getElementById("sapatr").value = document.getElementById("status").value + "#" + document.getElementById("catatan").value+ "#" + document.getElementById("jpeserta").value+ "#" + document.getElementById("dpeserta").value;
-			document.getElementById("sapacr").value = document.getElementById("tkeberhasilan").value + "#" + document.getElementById("ptarget").value+ "#" + document.getElementById("fhambatan").value + "#" + document.getElementById("fpendukung").value + "#" + document.getElementById("saran").value;
+			document.getElementById("sapatr").value = document.getElementById("status").value + "#" + document.getElementById("catatan").value.trim() + "#" + document.getElementById("jpeserta").value.trim() + "#" + document.getElementById("dpeserta").value.trim();
+			document.getElementById("sapacr").value = document.getElementById("tkeberhasilan").value + "#" + document.getElementById("ptarget").value.trim() + "#" + document.getElementById("fhambatan").value.trim() + "#" + document.getElementById("fpendukung").value.trim() + "#" + document.getElementById("saran").value.trim();
 		}
 	</script>
 </div>
