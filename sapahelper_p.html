@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAPA#Helper - Perencanaan</title>
+<style>
+body {
+	font-family: Arial, Helvetica, Sans-serif;
+	font-size: 16px;
+}
+{
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  font-family: Arial, Helvetica, Sans-serif;
+  font-size: 16px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 8px 8px 8px 0;
+  display: inline-block;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.cpbutton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 5px 25px 5px 10px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, button {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<h2>SAPA#Helper - Perencanaan</h2>
+
+<div class="container">
+  <form id="sapahelper">
+    <div class="row">
+		<div class="col-25">
+		  <label for="jenis">Jenis Kegiatan</label>
+		</div>
+		<div class="col-25">
+		  <select id="jenis" name="jenis">
+			  <option value="1-Ibadat">Ibadat</option>
+			  <option value="2-Pewartaan">Pewartaan</opton>
+			  <option value="3-Persekutuan">Persekutuan</option>
+			  <option value="4-Pelayanan">Pelayanan</option>
+			  <option value="5-Kesaksian">Kesaksian</option>
+			  <option value="6-Plat_Bang">Plat_Bang</option>
+			  <option value="7-Per_Ev">Per_Ev</option>
+			  <option value="8-Lainnya">Lainnya</option>
+		  </select>
+		</div>
+	  </div>
+	  <div class="row">
+      <div class="col-25">
+        <label for="sasaran">Sasaran</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="sasaran" name="sasaran">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="indikator">Indikator</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="indikator" name="indikator">
+      </div>
+    </div>
+    <div class="row">
+		<div class="col-25">
+		  <label for="keterangan">Keterangan</label>
+		</div>
+		<div class="col-75">
+		  <input type="text" id="keterangan" name="keterangan">
+		</div>
+	  </div>
+    <div class="row">
+      <div class="col-25">
+          <label for="paroki">Dari Paroki Rp.</label>
+        </div>
+        <div class="col-25">
+          <input type="text" id="paroki" name="paroki" onkeypress="return onlyNumberKey(event)">
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="peserta">Peserta Rp.</label>
+      </div>
+      <div class="col-25">
+        <input type="text" id="peserta" name="peserta" onkeypress="return onlyNumberKey(event)">
+      </div>
+    </div>
+      <div class="row">
+		<div class="col-25">
+		  <label for="donatur">Donatur Rp.</label>
+		</div>
+		<div class="col-25">
+		  <input type="text" id="donatur" name="donatur" onkeypress="return onlyNumberKey(event)">
+		</div>
+	</div>
+    <div class="row" align="center">
+		<button class="button" type="button" onclick="rst()">Reset</button> <button class="button" type="button" onclick="proses()">Proses</button>
+	</div>
+	<div class="row">
+		<b>Silahkan data ini di copy-paste ke SAPA:</b>
+	</div>
+	<div class="row">
+		<div class="col-25">
+		  <label for="sapaket">SAPA Keterangan
+		  <p style="font-size:12px">(Max 1000 karakter)</p>
+		  </label>
+		</div>
+		<div class="col-75">
+			<textarea id="sapaket" name="sapaket" disabled></textarea>
+			<button class="cpbutton" type="button" onclick="cpket()">Copy</button>
+		</div>
+	</div>
+	</form>
+	<script>
+		function rst(){
+			document.getElementById("sapahelper").reset();
+		}
+
+		function proses(){
+			document.getElementById("sapaket").value = document.getElementById("keterangan").value.trim() + "#Jenis:" + document.getElementById("jenis").value + "#Sasaran:" + document.getElementById("sasaran").value.trim() + "#Indikator:" + document.getElementById("indikator").value.trim() + "#Paroki:" + document.getElementById("paroki").value.trim() + "#Peserta:" + document.getElementById("peserta").value.trim() + "#Donatur:" + document.getElementById("donatur").value.trim();
+			if(document.getElementById("sapaket").value.length > 1000) {
+				document.getElementById("sapaket").value = "Melebihi 1000 karakter, isian data Keterangan, Sasaran dan Indikator tolong dipersingkat.";
+			}
+		}
+		function cpket() {
+  		var copyText = document.getElementById("sapaket");
+
+  		copyText.select();
+  		copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  		navigator.clipboard.writeText(copyText.value);
+		}
+    function onlyNumberKey(evt) {
+      var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+      if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+        return false;
+      return true;
+    }
+  </script>
+</div>
+
+</body>
+</html>
