@@ -134,30 +134,6 @@ label {
 		  <input type="text" id="keterangan" name="keterangan">
 		</div>
 	  </div>
-    <div class="row">
-      <div class="col-25">
-          <label for="paroki">Dari Paroki Rp.</label>
-        </div>
-        <div class="col-25">
-          <input type="text" id="paroki" name="paroki" onkeypress="return onlyNumberKey(event)">
-        </div>
-      </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="peserta">Peserta Rp.</label>
-      </div>
-      <div class="col-25">
-        <input type="text" id="peserta" name="peserta" onkeypress="return onlyNumberKey(event)">
-      </div>
-    </div>
-      <div class="row">
-		<div class="col-25">
-		  <label for="donatur">Donatur Rp.</label>
-		</div>
-		<div class="col-25">
-		  <input type="text" id="donatur" name="donatur" onkeypress="return onlyNumberKey(event)">
-		</div>
-	</div>
     <div class="row" align="center">
 		<button class="button" type="button" onclick="rst()">Reset</button> <button class="button" type="button" onclick="proses()">Proses</button>
 	</div>
@@ -182,9 +158,9 @@ label {
 		}
 
 		function proses(){
-			document.getElementById("sapaket").value = document.getElementById("keterangan").value.trim() + "#Jenis:" + document.getElementById("jenis").value + "#Sasaran:" + document.getElementById("sasaran").value.trim() + "#Indikator:" + document.getElementById("indikator").value.trim() + "#Paroki:" + document.getElementById("paroki").value.trim() + "#Peserta:" + document.getElementById("peserta").value.trim() + "#Donatur:" + document.getElementById("donatur").value.trim();
+			document.getElementById("sapaket").value = document.getElementById("keterangan").value.trim() + "#Jenis:" + document.getElementById("jenis").value + "#Sasaran:" + document.getElementById("sasaran").value.trim() + "#Indikator:" + document.getElementById("indikator").value.trim();
 			if(document.getElementById("sapaket").value.length > 1000) {
-				document.getElementById("sapaket").value = "Melebihi 1000 karakter, isian data Keterangan, Sasaran dan Indikator tolong dipersingkat.";
+				document.getElementById("sapaket").value = "Melebihi 1000 karakter, isian data Sasaran, Indikator dan Keterangan tolong dipersingkat.";
 			}
 		}
 		function cpket() {
@@ -195,12 +171,6 @@ label {
 
   		navigator.clipboard.writeText(copyText.value);
 		}
-    function onlyNumberKey(evt) {
-      var ASCIICode = (evt.which) ? evt.which : evt.keyCode
-      if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-        return false;
-      return true;
-    }
   </script>
 </div>
 
